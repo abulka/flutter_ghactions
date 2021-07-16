@@ -87,7 +87,7 @@ jobs:
           ls -l build/windows
           ls -l build/windows/runner
           cd build/windows/runner/Release
-          zip -r windows-app.zip flutter_ghactions.exe
+          zip -r windows-app.zip .
           cd ../../../..
           pwd
       - name: Release Windows App

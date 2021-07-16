@@ -2,6 +2,14 @@
 
 Building a default flutter project using GitHub Actions for all OS's.
 
+## Windows support
+
+I had to
+
+     flutter create --platforms=windows .
+
+on a windows 10 machine to get the `windows/` subdirectory to be created, to support building a windows build.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
