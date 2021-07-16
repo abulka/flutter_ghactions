@@ -42,6 +42,18 @@ jobs:
           flutter build web
           cd build/web
           zip -r web-app.zip .
+          cd ../..
+
+      - name: Enable Macos
+        run: flutter config --enable-macos-desktop
+      - name: Build macOS app
+        run: flutter build macos --release
+        run: |
+          cd build/macos/Build/Products/Debug
+          zip -r macos-app.zip flutter_ghactions
+          cd ../../../../..
+          ls
+
       - name: Release Apps
         uses: ncipollo/release-action@v1
         with:
@@ -49,4 +61,4 @@ jobs:
           name: ${{ env.APP_VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
           # artifacts: 'build/app/outputs/apk/release/*.apk,build/ios/iphoneos/app.ipa,build/web/web-app.zip'
-          artifacts: 'build/web/web-app.zip'
+          artifacts: 'build/web/web-app.zip,build/macos/Build/Products/Debug/macos-app.zip'
