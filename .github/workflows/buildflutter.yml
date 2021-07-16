@@ -26,8 +26,8 @@ jobs:
         run: flutter pub get
       - name: Run Tests
         run: flutter test
-      # - name: Build Android App
-      #   run: flutter build apk --split-per-abi
+      - name: Build Android App
+        run: flutter build apk --split-per-abi
       # - name: Build iOS App
       #   run: |
       #     flutter build ios --no-codesign
@@ -50,10 +50,13 @@ jobs:
         run: flutter build macos --release
       - name: Zip up macOS app
         run: |
-          cd build/macos/Build/Products/Debug
-          zip -r macos-app.zip flutter_ghactions
-          cd ../../../../..
-          ls
+          pwd
+          ls -R
+          # cd build/macos/Build/Products/Debug
+          # zip -r macos-app.zip flutter_ghactions
+          # cd ../../../../..
+          # ls
+          zip -r macos-app.zip build/macos
 
       - name: Release Apps
         uses: ncipollo/release-action@v1
@@ -62,4 +65,5 @@ jobs:
           name: ${{ env.APP_VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
           # artifacts: 'build/app/outputs/apk/release/*.apk,build/ios/iphoneos/app.ipa,build/web/web-app.zip'
-          artifacts: 'build/web/web-app.zip,build/macos/Build/Products/Debug/macos-app.zip'
+          # artifacts: 'build/web/web-app.zip,build/macos/Build/Products/Debug/macos-app.zip'
+          artifacts: 'build/app/outputs/apk/release/*.apk,build/web/web-app.zip,macos-app.zip'
