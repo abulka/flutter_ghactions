@@ -55,7 +55,7 @@ jobs:
           ls -R build/macos/Build/Products/
           # cd build/macos/Build/Products/Debug
           cd build/macos/Build/Products/Release
-          zip -r macos-app.zip flutter_ghactions
+          zip -r macos-app.zip flutter_ghactions.app
           cd ../../../../..
           pwd
           # zip -r macos-app.zip build/macos
@@ -82,18 +82,30 @@ jobs:
       - run: flutter pub get
       - run: flutter build windows --release
       - name: Zip up windows app
+        # run: |
+        #   pwd
+        #   ls -l build/windows
+        #   ls -l build/windows/runner
+        #   cd build/windows/runner/Release
+        #   zip -r windows-app.zip .
+        #   cd ../../../..
+        #   pwd
+        uses: papeloto/action-zip@v1
+          with:
+            files: build/windows/runner/Release
+            recursive: true
+            dest: windows-app.zip
+      - name: Take a look around
+        shell: bash
         run: |
           pwd
-          ls -l build/windows
+          ls -l
           ls -l build/windows/runner
-          cd build/windows/runner/Release
-          zip -r windows-app.zip .
-          cd ../../../..
-          pwd
       - name: Release Windows App
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ env.APP_VERSION }}
           name: ${{ env.APP_VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: 'build/windows/runner/Release/windows-app.zip'
+          # artifacts: 'build/windows/runner/Release/windows-app.zip'
+          artifacts: 'windows-app.zip'
