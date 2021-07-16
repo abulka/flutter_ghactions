@@ -91,10 +91,10 @@ jobs:
         #   cd ../../../..
         #   pwd
         uses: papeloto/action-zip@v1
-          with:
-            files: build/windows/runner/Release
-            recursive: true
-            dest: windows-app.zip
+        with:
+          files: build/windows/runner/Release
+          recursive: true
+          dest: windows-app.zip
       - name: Take a look around
         shell: bash
         run: |
