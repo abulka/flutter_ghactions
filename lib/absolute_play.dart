@@ -142,26 +142,30 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Align(
               alignment: Alignment(-0.8, -0.22),
-              child: ElevatedButton(
-                onPressed: () {
-                  print('Button pressed ...');
-                },
-                child: Text('Click me again!'),
-                // text: 'Button',
-                // options: FFButtonOptions(
-                //   width: 130,
-                //   height: 40,
-                //   color: FlutterFlowTheme.primaryColor,
-                //   textStyle: FlutterFlowTheme.subtitle2.override(
-                //     fontFamily: 'Poppins',
-                //     color: Colors.white,
-                //   ),
-                //   borderSide: BorderSide(
-                //     color: Colors.transparent,
-                //     width: 1,
-                //   ),
-                //   borderRadius: 12,
-                // ),
+              child: Container(
+                color: Colors.greenAccent,
+                height: 200,
+                child: ElevatedButton(
+                  onPressed: () {
+                    print('Button pressed!!!! ...');
+                  },
+                  child: Text('Click me again!'),
+                  // text: 'Button',
+                  // options: FFButtonOptions(
+                  //   width: 130,
+                  //   height: 40,
+                  //   color: FlutterFlowTheme.primaryColor,
+                  //   textStyle: FlutterFlowTheme.subtitle2.override(
+                  //     fontFamily: 'Poppins',
+                  //     color: Colors.white,
+                  //   ),
+                  //   borderSide: BorderSide(
+                  //     color: Colors.transparent,
+                  //     width: 1,
+                  //   ),
+                  //   borderRadius: 12,
+                  // ),
+                ),
               ),
             ),
             Align(
